@@ -1,0 +1,29 @@
+1 2
+2 6
+
+
+3 2
+
+import pandas as pd
+import numpy as np
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Importing the dataset
+dataset = pd.read_csv('Teams.csv')
+dfCIN = dataset[dataset['teamID']=="CIN"] # Cincinati reds nl
+dfCHN = dataset[dataset['teamID']=="CHN"] #CHicago cubs NL
+# dfNYA = dataset[dataset['teamID']=="NYA"] #1 Yankes 1903-2015
+# dfDET = dataset[dataset['teamID']=="DET"] #2 detroit tigers 1901-2015
+dfPHI = dataset[dataset['teamID']=="PHI"] #3 philadelfia phillies 1883-2015
+dfPIT = dataset[dataset['teamID']=="PIT"] #4 pitsburg pirates 1887-2015
+dfPHI=dfPHI.set_index('yearID')
+dfCIN=dfCIN.set_index('yearID')
+dfCHN=dfCHN.set_index('yearID')
+dfPIT=dfPIT.set_index('yearID')
+dfPHI=dfPHI.loc[1903:]
+dfCIN=dfCIN.loc[1903:]
+dfPIT = dfPIT.loc[1903:]
+dfCHN=dfCHN.loc[1903:]
+# dfPHI=dfPHI.dropna()
