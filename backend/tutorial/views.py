@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from tutorial.serializers import UserSerializer, GroupSerializer ,MovieSerializer
+from tutorial.serializers import MovieSerializer
 from .models import Movie
 
 from rest_framework.views import APIView
@@ -37,7 +37,8 @@ class MovieView(APIView):
        
         temp = Movie.objects.all()
         ser = MovieSerializer(temp, many=True)
-        return Response(ser.data)
+        context = {'data': ser.data,'auth':1}
+        return Response(context)
 
     def post(self, request):
         title = request.POST['title']
